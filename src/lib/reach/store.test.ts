@@ -30,14 +30,14 @@ describe("REACH status rules", () => {
   it("does not treat internal escalation as household contact", () => {
     for (const channel of ["system", "coordinator"] as const) {
       const result = applyEvent(households, { householdId: "h2", channel, message: "Escalated" });
-      expect(result.find((h) => h.id === "h2")?.lastContactAt).toBe(households[1].lastContactAt);
+      expect(result.find((h) => h.id === "h2")?.lastContactAt).toBe(households.find((h) => h.id === "h2")?.lastContactAt);
       expect(result.find((h) => h.id === "h2")?.lastChannel).toBe("voice");
     }
   });
   it("records SMS fallback as the latest communication channel", () => {
     const result = applyEvent(households, { householdId: "h2", channel: "sms", message: "Fallback" });
     expect(result.find((h) => h.id === "h2")?.lastChannel).toBe("sms");
-    expect(result.find((h) => h.id === "h2")?.lastContactAt).not.toBe(households[1].lastContactAt);
+    expect(result.find((h) => h.id === "h2")?.lastContactAt).not.toBe(households.find((h) => h.id === "h2")?.lastContactAt);
   });
   it("keeps the incident simulation-only", () => {
     expect(incident.simulation).toBe(true);
