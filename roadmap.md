@@ -1,5 +1,9 @@
 # REACH roadmap
 
+- [ ] Refresh civic-tech colors, surfaces, status pills and hierarchy
+- [ ] Make table and selected household details spacious and readable
+- [ ] Verify visual layout and existing outreach interactions
+
 - [x] Separate primary status and follow-up escalation; verify initial counts and undispatched assistance
 - [x] Add communication metadata and widen the timeline panel
 - [x] Test status rules and verify dashboard interactions
