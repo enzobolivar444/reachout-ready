@@ -38,10 +38,10 @@
   --muted-foreground: #5b6b82;
   --border: #d6e0ec;
   --ring: #003060;
-  --amber: #b06a00;
-  --success: #0e7a4e;
-  --danger: #c0271d;
-  --info: #067a6c;
+  --amber: #8f5400;
+  --success: #0a6142;
+  --danger: #b02219;
+  --info: #056357;
 }
 
 @layer base {
