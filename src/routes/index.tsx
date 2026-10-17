@@ -21,8 +21,8 @@ export const Route = createFileRoute("/")({
 
 const STATUS: Record<Status, { label: string; cls: string }> = {
   confirmed: { label: "Confirmed", cls: "text-success border-outline bg-success/10" },
-  needs_assistance: { label: "Needs Assistance", cls: "text-primary border-outline bg-amber/25" },
-  human_followup: { label: "Human Follow-Up", cls: "text-primary border-outline bg-amber" },
+  needs_assistance: { label: "Needs Assistance", cls: "text-orange border-outline bg-orange/10" },
+  human_followup: { label: "Human Follow-Up", cls: "text-amber-ink border-outline bg-amber/20" },
   unreachable: { label: "Unreachable", cls: "text-danger border-outline bg-danger/10" },
   pending: { label: "Outreach in progress", cls: "text-info border-outline bg-info/10" },
 };
@@ -84,8 +84,8 @@ function Dashboard() {
         </section>
 
         {followups.length > 0 && (
-          <section className="rounded-md border border-outline bg-amber/25 p-5">
-            <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-primary">Human follow-up required</h3>
+          <section className="rounded-md border border-outline border-l-4 border-l-amber bg-amber/15 p-5">
+            <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-amber-ink">Human follow-up required</h3>
             <ul className="mt-2 space-y-1">
               {followups.map((h) => (
                 <li key={h.id} className="text-foreground">
@@ -128,7 +128,7 @@ function Dashboard() {
             <div className="mt-4 grid grid-cols-2 gap-2">
               <button onClick={() => act(sel, "start")} className="col-span-2 rounded bg-primary px-3 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90">Start outreach</button>
               <button onClick={() => act(sel, "confirm")} className="rounded border border-outline px-3 py-2 text-sm text-success hover:bg-success/10">Mark confirmed</button>
-              <button onClick={() => act(sel, "assist")} className="rounded border border-outline bg-amber/20 px-3 py-2 text-sm text-primary hover:bg-amber/40">Mark needs assistance</button>
+              <button onClick={() => act(sel, "assist")} className="rounded border border-outline bg-orange/10 px-3 py-2 text-sm text-orange hover:bg-orange/20">Mark needs assistance</button>
               <button onClick={() => act(sel, "sms")} className="rounded border border-outline px-3 py-2 text-sm hover:bg-muted">Send SMS fallback</button>
               <button onClick={() => act(sel, "unreach")} className="rounded border border-outline px-3 py-2 text-sm text-danger hover:bg-danger/10">Mark unreachable</button>
             </div>

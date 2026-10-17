@@ -21,6 +21,8 @@
   --color-border: var(--border);
   --color-ring: var(--ring);
   --color-amber: var(--amber);
+  --color-amber-ink: var(--amber-ink);
+  --color-orange: var(--orange);
   --color-success: var(--success);
   --color-danger: var(--danger);
   --color-info: var(--info);
@@ -40,6 +42,8 @@
   --border: #d6e0ec;
   --ring: #003060;
   --amber: #ffd400;
+  --amber-ink: #8a6a00;
+  --orange: #b45309;
   --outline: #101622;
   --success: #0a6142;
   --danger: #b02219;
