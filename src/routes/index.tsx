@@ -67,7 +67,7 @@ function Dashboard() {
       <main className="mx-auto max-w-7xl space-y-6 p-6">
         <section className="rounded-md border border-outline border-l-4 border-l-danger bg-card p-5">
           <div className="flex flex-wrap items-center gap-3">
-            <span className="rounded bg-danger px-2 py-0.5 font-mono text-xs font-bold uppercase text-foreground">Exercise — not a real event</span>
+            <span className="rounded border border-outline bg-danger px-2 py-0.5 font-mono text-xs font-bold uppercase text-primary-foreground">Exercise — not a real event</span>
             <span className="font-mono text-xs text-muted-foreground">INCIDENT {incident.id.toUpperCase()} · started {time(incident.startedAt)}</span>
           </div>
           <h2 className="mt-2 text-xl font-semibold">{incident.title}</h2>
