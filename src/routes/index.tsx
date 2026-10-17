@@ -3,6 +3,7 @@ import { useState } from "react";
 import { incident } from "@/lib/reach/mock-data";
 import { useHouseholds } from "@/lib/reach/store";
 import type { Household, Status } from "@/lib/reach/types";
+import logo from "@/assets/reach-logo.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
