@@ -1,5 +1,9 @@
 # REACH roadmap
 
+- [ ] Separate primary status and follow-up escalation; verify initial counts and undispatched assistance
+- [ ] Add communication metadata and widen the timeline panel
+- [ ] Test status rules and verify dashboard interactions
+
 - [x] Place the REACH emblem in the header and set matching browser icons
 - [x] Light template: white surfaces, navy text pulled from the logo
 - [x] Human follow-up shown in yellow instead of orange
