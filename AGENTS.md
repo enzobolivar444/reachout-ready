@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep primary household status and human-follow-up escalation as independent fields and derive summary counts from each; escalation must not replace an evacuation outcome.
+- Normalize mock actions and future webhook updates through `applyEvent`; only voice and SMS events update last-contact metadata.

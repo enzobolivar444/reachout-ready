@@ -1,6 +1,7 @@
 // Domain types. Shaped so a backend / Retell webhook can later push the same events.
-export type Status = "confirmed" | "needs_assistance" | "human_followup" | "unreachable" | "pending";
+export type Status = "confirmed" | "needs_assistance" | "unreachable" | "pending";
 export type Channel = "voice" | "sms" | "system" | "coordinator";
+export type ContactChannel = "voice" | "sms";
 
 export interface TimelineEvent {
   id: string;
@@ -15,6 +16,8 @@ export interface Household {
   neighborhood: string;
   language: string;
   status: Status;
+  humanFollowUpRequired: boolean;
+  lastChannel: ContactChannel | null;
   lastContactAt: string | null;
   assistanceNeed: string | null;
   dispatched: boolean;
@@ -34,5 +37,6 @@ export interface OutreachEvent {
   channel: Channel;
   message: string;
   status?: Status;
+  humanFollowUpRequired?: boolean;
   assistanceNeed?: string | null;
 }
