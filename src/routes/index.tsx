@@ -55,13 +55,9 @@ function Dashboard() {
 
   return (
     <div className="min-h-screen">
-      <header className="flex items-center justify-between border-b px-6 py-4">
+      <header className="flex items-center justify-between border-b bg-card px-6 py-4">
         <div className="flex items-center gap-3">
-          <img
-            src={logo}
-            alt="REACH emblem"
-            className="h-10 w-10 shrink-0 rounded-md bg-white p-1 ring-1 ring-white/25"
-          />
+          <img src={logo} alt="REACH emblem" className="h-10 w-10 shrink-0" />
           <h1 className="text-2xl font-bold tracking-[0.3em]">REACH</h1>
           <span className="text-sm text-muted-foreground">Evacuation response coordinator</span>
         </div>
