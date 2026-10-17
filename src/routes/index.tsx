@@ -35,7 +35,7 @@ function Badge({ s }: { s: Status }) {
 
 function Dashboard() {
   const { list, dispatch } = useHouseholds();
-  const [selId, setSelId] = useState(list[1].id);
+  const [selId, setSelId] = useState("h2");
   const sel = list.find((h) => h.id === selId)!;
   const count = (s: Status) => list.filter((h) => h.status === s).length;
   const followups = list.filter((h) => h.status === "human_followup" || (h.status === "needs_assistance" && !h.dispatched));
@@ -48,7 +48,8 @@ function Dashboard() {
       sms: { householdId: h.id, channel: "sms", message: `SMS fallback sent in ${h.language}.` },
       unreach: { householdId: h.id, channel: "coordinator", status: "unreachable", message: "Coordinator marked household unreachable." },
     };
-    dispatch(m[kind]);
+    const ev = m[kind];
+    if (ev) dispatch(ev);
   };
 
   return (
