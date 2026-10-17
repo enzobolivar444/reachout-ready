@@ -20,11 +20,11 @@ export const Route = createFileRoute("/")({
 });
 
 const STATUS: Record<Status, { label: string; cls: string }> = {
-  confirmed: { label: "Confirmed", cls: "text-success border-success/40 bg-success/10" },
-  needs_assistance: { label: "Needs Assistance", cls: "text-amber border-amber/40 bg-amber/10" },
-  human_followup: { label: "Human Follow-Up", cls: "text-amber border-amber/60 bg-amber/20" },
-  unreachable: { label: "Unreachable", cls: "text-danger border-danger/40 bg-danger/10" },
-  pending: { label: "Outreach in progress", cls: "text-info border-info/40 bg-info/10" },
+  confirmed: { label: "Confirmed", cls: "text-success border-outline bg-success/10" },
+  needs_assistance: { label: "Needs Assistance", cls: "text-primary border-outline bg-amber/25" },
+  human_followup: { label: "Human Follow-Up", cls: "text-primary border-outline bg-amber" },
+  unreachable: { label: "Unreachable", cls: "text-danger border-outline bg-danger/10" },
+  pending: { label: "Outreach in progress", cls: "text-info border-outline bg-info/10" },
 };
 
 const time = (iso: string | null) =>
@@ -55,17 +55,17 @@ function Dashboard() {
 
   return (
     <div className="min-h-screen">
-      <header className="flex items-center justify-between border-b bg-card px-6 py-4">
+      <header className="flex items-center justify-between border-b border-outline bg-card px-6 py-4">
         <div className="flex items-center gap-3">
           <img src={logo} alt="REACH emblem" className="h-10 w-10 shrink-0" />
           <h1 className="text-2xl font-bold tracking-[0.3em]">REACH</h1>
           <span className="text-sm text-muted-foreground">Evacuation response coordinator</span>
         </div>
-        <span className="rounded border border-amber bg-amber/15 px-3 py-1 font-mono text-xs font-semibold uppercase tracking-wider text-amber">Simulation only</span>
+        <span className="rounded border border-outline bg-amber px-3 py-1 font-mono text-xs font-semibold uppercase tracking-wider text-primary">Simulation only</span>
       </header>
 
       <main className="mx-auto max-w-7xl space-y-6 p-6">
-        <section className="rounded-md border border-l-4 border-l-danger bg-card p-5">
+        <section className="rounded-md border border-outline border-l-4 border-l-danger bg-card p-5">
           <div className="flex flex-wrap items-center gap-3">
             <span className="rounded bg-danger px-2 py-0.5 font-mono text-xs font-bold uppercase text-foreground">Exercise — not a real event</span>
             <span className="font-mono text-xs text-muted-foreground">INCIDENT {incident.id.toUpperCase()} · started {time(incident.startedAt)}</span>
@@ -84,8 +84,8 @@ function Dashboard() {
         </section>
 
         {followups.length > 0 && (
-          <section className="rounded-md border border-amber bg-amber/10 p-5">
-            <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-amber">Human follow-up required</h3>
+          <section className="rounded-md border border-outline bg-amber/25 p-5">
+            <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-primary">Human follow-up required</h3>
             <ul className="mt-2 space-y-1">
               {followups.map((h) => (
                 <li key={h.id} className="text-foreground">
@@ -97,14 +97,14 @@ function Dashboard() {
         )}
 
         <div className="grid gap-6 lg:grid-cols-3">
-          <section className="overflow-x-auto rounded-md border bg-card lg:col-span-2">
+          <section className="overflow-x-auto rounded-md border border-outline bg-card lg:col-span-2">
             <table className="w-full text-sm">
-              <thead className="border-b text-left text-xs uppercase tracking-wider text-muted-foreground">
+              <thead className="border-b border-outline text-left text-xs uppercase tracking-wider text-muted-foreground">
                 <tr>{["Household", "Neighborhood", "Language", "Status", "Last contact", "Assistance need"].map((c) => <th key={c} className="px-4 py-3 font-medium">{c}</th>)}</tr>
               </thead>
               <tbody>
                 {list.map((h) => (
-                  <tr key={h.id} onClick={() => setSelId(h.id)} className={`cursor-pointer border-b last:border-0 hover:bg-muted ${h.id === selId ? "bg-muted" : ""}`}>
+                  <tr key={h.id} onClick={() => setSelId(h.id)} className={`cursor-pointer border-b border-outline last:border-0 hover:bg-muted ${h.id === selId ? "bg-muted" : ""}`}>
                     <td className="px-4 py-3 font-medium">{h.name}</td>
                     <td className="px-4 py-3">{h.neighborhood}</td>
                     <td className="px-4 py-3">{h.language}</td>
@@ -117,7 +117,7 @@ function Dashboard() {
             </table>
           </section>
 
-          <section className="rounded-md border bg-card p-5">
+          <section className="rounded-md border border-outline bg-card p-5">
             <div className="flex items-start justify-between">
               <div>
                 <h3 className="text-lg font-semibold">{sel.name}</h3>
@@ -127,10 +127,10 @@ function Dashboard() {
             </div>
             <div className="mt-4 grid grid-cols-2 gap-2">
               <button onClick={() => act(sel, "start")} className="col-span-2 rounded bg-primary px-3 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90">Start outreach</button>
-              <button onClick={() => act(sel, "confirm")} className="rounded border border-success/50 px-3 py-2 text-sm text-success hover:bg-success/10">Mark confirmed</button>
-              <button onClick={() => act(sel, "assist")} className="rounded border border-amber/50 px-3 py-2 text-sm text-amber hover:bg-amber/10">Mark needs assistance</button>
-              <button onClick={() => act(sel, "sms")} className="rounded border px-3 py-2 text-sm hover:bg-muted">Send SMS fallback</button>
-              <button onClick={() => act(sel, "unreach")} className="rounded border border-danger/50 px-3 py-2 text-sm text-danger hover:bg-danger/10">Mark unreachable</button>
+              <button onClick={() => act(sel, "confirm")} className="rounded border border-outline px-3 py-2 text-sm text-success hover:bg-success/10">Mark confirmed</button>
+              <button onClick={() => act(sel, "assist")} className="rounded border border-outline bg-amber/20 px-3 py-2 text-sm text-primary hover:bg-amber/40">Mark needs assistance</button>
+              <button onClick={() => act(sel, "sms")} className="rounded border border-outline px-3 py-2 text-sm hover:bg-muted">Send SMS fallback</button>
+              <button onClick={() => act(sel, "unreach")} className="rounded border border-outline px-3 py-2 text-sm text-danger hover:bg-danger/10">Mark unreachable</button>
             </div>
             <h4 className="mt-6 font-mono text-xs uppercase tracking-wider text-muted-foreground">Communication timeline</h4>
             <ol className="mt-3 space-y-3 border-l pl-4">

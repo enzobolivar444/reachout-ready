@@ -24,6 +24,7 @@
   --color-success: var(--success);
   --color-danger: var(--danger);
   --color-info: var(--info);
+  --color-outline: var(--outline);
 }
 
 :root {
@@ -38,7 +39,8 @@
   --muted-foreground: #495a73;
   --border: #d6e0ec;
   --ring: #003060;
-  --amber: #7a4500;
+  --amber: #ffd400;
+  --outline: #101622;
   --success: #0a6142;
   --danger: #b02219;
   --info: #056357;
