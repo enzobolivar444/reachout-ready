@@ -5,3 +5,4 @@
 - [x] Human follow-up shown in yellow instead of orange
 - [x] Dark outlines around panels, cards, badges and buttons so the page isn't too white
 - [x] Re-check the dashboard in the preview after these changes
+- [x] Needs Assistance in orange; Human Follow-Up in yellow, tinted card + colored number like Confirmed and Unreachable
