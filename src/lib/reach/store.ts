@@ -11,11 +11,22 @@ export function applyEvent(list: Household[], ev: OutreachEvent): Household[] {
       : {
           ...h,
           status: ev.status ?? h.status,
+          humanFollowUpRequired: ev.humanFollowUpRequired ?? h.humanFollowUpRequired,
           assistanceNeed: ev.assistanceNeed !== undefined ? ev.assistanceNeed : h.assistanceNeed,
-          lastContactAt: ev.channel === "coordinator" ? h.lastContactAt : at,
+          lastContactAt: ev.channel === "voice" || ev.channel === "sms" ? at : h.lastContactAt,
+          lastChannel: ev.channel === "voice" || ev.channel === "sms" ? ev.channel : h.lastChannel,
           timeline: [...h.timeline, { id: crypto.randomUUID(), at, channel: ev.channel, message: ev.message }],
         },
   );
+}
+
+export function summarizeHouseholds(list: Household[]) {
+  return {
+    confirmed: list.filter((h) => h.status === "confirmed").length,
+    needs_assistance: list.filter((h) => h.status === "needs_assistance").length,
+    unreachable: list.filter((h) => h.status === "unreachable").length,
+    openFollowUps: list.filter((h) => h.humanFollowUpRequired).length,
+  };
 }
 
 export function useHouseholds() {
